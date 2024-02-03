@@ -34,6 +34,13 @@ const PanelPage = ({ }) => {
         if (trueCount === 1) {
             console.log("Horray")
             // call the final image page
+            // 
+            let imgArgs = []
+            for (let i = 0; i < checkedStates.length; i++){
+                if(checkedStates[i] === true){
+                    imgArgs.push(images[i])
+                }
+            }
             setErrorMessage('')
         }
         else {
