@@ -1,0 +1,66 @@
+.panel-page {
+    display: flex;
+    flex-direction: column;
+    // flex-wrap: wrap;
+    gap: 10px; /* Adjust the spacing between images as needed */
+    margin: 10px;
+    text-align: center;
+
+ 
+    .image-list{
+      display: flex;
+      gap: 10px;
+      margin: 100px 0px
+      
+    }
+
+    .image-container {
+      position: relative;
+      cursor: pointer;
+      width: 20%;
+    }
+
+    .image-hover {
+      display: block;
+      width: 100%; /* Adjust width as needed */
+      transition: opacity 0.3s ease;
+    }
+
+    
+    .image-hover:hover {
+      opacity: 0.7;
+    }
+
+    .image-selected {
+      display: block;
+      width: 100%; /* Adjust width as needed */
+      transition: opacity 0.3s ease;
+      border: 5px solid green;
+    }
+
+    .image-selected:hover {
+      opacity: 0.7;
+    }
+
+    .checkbox-container {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: none;
+
+    }
+    
+    .image-container:hover .checkbox-container {
+      display: block;
+    }
+    
+    .image-checkbox {
+      cursor: pointer;
+      width: 20px;
+
+    }
+
+
+  }
+
+
