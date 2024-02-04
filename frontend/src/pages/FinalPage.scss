@@ -1,10 +1,25 @@
-.final-page{
-
-    align-items: center;
+.final-page {
     text-align: center;
-    display: block;
+
+
+    h4 {
+        padding-top: 50px;
+    }
+
+    .content {
+        margin-top: 50px;
+        width: 50%;
+        border: 2px solid gray;
+        background-color: white;
+        padding: 10px 50px;
+        gap: 5px;
+        border-radius: 5%;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     img {
-        height: 50%
+        width: 100%
     }
 }

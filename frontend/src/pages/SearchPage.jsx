@@ -6,10 +6,14 @@ import './SearchPage.scss'
 
 const SearchPage = () => {
   return (
-    <div className='search-page'>
-        <UploadButton/>
-        <QueryBar/>
+    <div className='main-page'>
+      <h2>Welcome to the _____</h2>
+      <div className='search-page'>
+        <QueryBar />
+
+      </div>
     </div>
+
   )
 }
 

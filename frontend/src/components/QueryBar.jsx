@@ -3,7 +3,7 @@ import { Form, Button, InputGroup } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import './QueryBar.scss'
 
 
 const QueryBar = () => {
@@ -14,7 +14,7 @@ const navigate = useNavigate()
 
 const imageUrls = [
     '/test-clock.jpg',
-    'test-color.jpg',
+    'test-dog.jpeg',
     'test-paper.jpg',
     'test-student.jpg',
     'test-teacher.jpg'
@@ -50,9 +50,13 @@ const handleQuerySearch = async () => {
 }
 
   return (
-    <div className="container mt-3">
-      <h2>Search</h2>
-    <InputGroup>
+    // <div className="container mt-3">
+    <div className="query-bar">
+
+      <h3>Search</h3>
+      <p>Find images based on your request</p>
+
+    <InputGroup className='bar'>
       <Form.Control
         type="text"
         placeholder="what you are looking for?"
@@ -60,7 +64,7 @@ const handleQuerySearch = async () => {
         onChange={handleQueryChange}
         value={query}
       />
-      <Button variant="outline-secondary" id="button-search" onClick={handleQuerySearch}>
+      <Button  id="button-search" onClick={handleQuerySearch}>
         Search
       </Button>
     </InputGroup>

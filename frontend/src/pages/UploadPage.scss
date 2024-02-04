@@ -1,0 +1,21 @@
+.upload-page {
+    text-align: center;
+    background-color: whitesmoke;
+    height: calc(100vh - 50px);
+
+    h2 {
+        padding-top: 50px;
+    }
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 50px;
+
+        >* {
+            width: 50%;
+        }
+    }
+
+}
