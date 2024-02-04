@@ -23,18 +23,27 @@ const PanelPage = ({ }) => {
     };
 
 
-    const handleFinalImage = () => {
+    const handleFinalImage = async () => {
         const trueCount = checkedStates.filter(value => value).length;
 
         if (trueCount === 1) {
             console.log("Horray")
             const trueIndex = checkedStates.findIndex(value => value === true);
             let imgArg = images[trueIndex]
-
-            // api call for
-            console.log("imgArg: " + imgArg)
-            navigate('/final', { state: { image: imgArg } })
-            setErrorMessage('')
+            try{
+                const formData = new FormData();
+                formData.append('inspiration_image_filenames', imgArg);
+                formData.append('iteration', 'final')
+                const response = await axios.post('http://localhost:8000/image-rag', formData,);
+                console.log('Query successfully sent to the API', response.data);
+                const description = response.data.description
+                console.log("imgArg: " + imgArg)
+                console.log("description: " + description)
+                navigate('/final', { state: { image: imgArg, imageDescription: description} })
+                setErrorMessage('')
+            } catch (error) {
+                console.error('Error querying', error);
+            }
         }
         else {
             setErrorMessage("Only one image can be selected")
