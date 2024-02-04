@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 import { Form } from 'react-router-dom';
 import './UploadButton.scss'
 import { FileUploader } from "react-drag-drop-files";
@@ -16,32 +17,29 @@ const UploadButton = () => {
       console.log(file)
     };
 
-    const handleFileSelect = (event) => {
-        setSelectedFile(event.target.files[0]);
-        console.log(selectedFile)
-    };
 
-    const fileTypes = ["JPG", "PNG", "GIF", "PDF", "ZIP"];
+    const fileTypes = ["JPG", "JPEG", "PNG", "GIF", "PDF", "ZIP"];
 
 
     const handleFileUpload = async () => {
-        // if (selectedFile) {
-        //     const formData = new FormData();
-        //     formData.append('file', selectedFile);
+        if (file) {
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('description', 'This is a test description')
 
-        //     try {
-        //         const response = await axios.post('YOUR_API_ENDPOINT', formData, {
-        //             headers: {
-        //                 'Content-Type': 'multipart/form-data',
-        //             },
-        //         });
-        //         console.log('File successfully sent to the API', response.data);
-        //     } catch (error) {
-        //         console.error('Error uploading file', error);
-        //     }
-        // } else {
-        //     console.log('No file selected');
-        // }
+            try {
+                const response = await axios.post('http://localhost:8000/images', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+                console.log('File successfully sent to the API', response.data);
+            } catch (error) {
+                console.error('Error uploading file', error);
+            }
+        } else {
+            console.log('No file selected');
+        }
     };
 
 
@@ -66,7 +64,7 @@ const UploadButton = () => {
 
             <div className='content'>
             <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
-            <Button>Send to DB</Button>
+            <Button onClick={handleFileUpload}>Send to DB</Button >
             </div>
 
         </div>
