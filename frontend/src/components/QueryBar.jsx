@@ -35,11 +35,13 @@ const handleQuerySearch = async () => {
         try {
                 const response = await axios.post('http://localhost:8000/image-rag', formData,);
                 let imageUrls = []
+                let prices = []
                 for (let i = 0; i < response.data.length; i++) {
                     imageUrls.push(response.data[i].filename)
+                    prices.push(response.data[i].description)
                 }
                 console.log('Query successfully sent to the API', imageUrls);
-                navigate('/panel', { state: { images: imageUrls }})
+                navigate('/panel', { state: { images: imageUrls , prices: prices}})
             } catch (error) {
                 console.error('Error querying', error);
             }
