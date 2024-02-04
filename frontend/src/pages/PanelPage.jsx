@@ -63,6 +63,32 @@ const PanelPage = ({ }) => {
 
         console.log(imgArgs)
         console.log(query)
+
+        if (imgArgs.length > 0){
+            const formData = new FormData();
+            formData.append('search_query', '');
+            formData.append('iteration', 'mid')
+            formData.append('fine_tuning_prompt', query)
+            formData.append('inspiration_image_filenames', imgArgs.join('&'))
+
+            try {
+                const response = await axios.post('http://localhost:8000/image-rag', formData,);
+                let imageUrls = []
+                for (let i = 0; i < response.data.length; i++) {
+                    imageUrls.push(response.data[i].filename)
+                }
+                console.log('Query successfully sent to the API', imageUrls);
+                setCheckedStates(new Array(images.length).fill(false))
+                setRenderForm(false)
+                setErrorMessage('')
+                setSelectedOption('')
+                setQuery('')
+                navigate('/panel', { state: { images: imageUrls }})
+            } catch (error) {
+                console.error('Error querying', error);
+            }
+        }
+
         //hand over image urls and text prompt to 
 
         if (imgArgs.length > 0){
@@ -87,9 +113,6 @@ const PanelPage = ({ }) => {
                 console.error('Error querying', error);
             }
         }
-
-
-        // reset state with new imageurls and original values
 
     }
 
