@@ -145,6 +145,7 @@ const PanelPage = ({ }) => {
                                         />
                                     </div>
                                 </div>
+                                <p className='prices'>{prices[index]}</p>
                             </div>
                         ) : (
                             <div className='item-card'>
@@ -162,7 +163,7 @@ const PanelPage = ({ }) => {
                                         />
                                     </div>
                                 </div>
-                                <p>{prices[index]}</p>
+                                    <p className='prices'>{prices[index]}</p>
                             </div>
                         )}
                     </>

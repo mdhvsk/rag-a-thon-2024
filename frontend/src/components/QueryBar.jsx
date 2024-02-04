@@ -19,6 +19,16 @@ const imageUrls = [
     'test-student.jpg',
     'test-teacher.jpg'
 ]
+
+const prices = [
+  "$20.00",
+  "$40.00",
+  "$26.00",
+  "$20.07",
+  "$90.00"
+
+
+]
 const handleQueryChange = (e) => {
     setQuery(e.target.value);
 }
