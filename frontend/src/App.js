@@ -5,6 +5,7 @@ import React from 'react'
 import SearchPage from './pages/SearchPage';
 import NavBar from './components/NavBar';
 import PanelPage from './pages/PanelPage';
+import FinalPage from './pages/FinalPage';
 
 
 
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<SearchPage/>} />
         <Route path='/panel' element={<PanelPage/>} />
+        <Route path='/final' element={<FinalPage/>} />
 
       </Routes>
     </BrowserRouter>

@@ -60,6 +60,20 @@
 
     }
 
+    .panel-decision{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      >* {
+        margin: 0px 50px
+      }
+    }
+
+    .warning {
+      color: red;
+      font-weight: 600;
+    }
 
   }
 

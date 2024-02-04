@@ -38,15 +38,17 @@ function NavBar() {
     //     </Navbar.Collapse>
     //   </Container>
     // </Navbar>
-    <Navbar bg="light" expand="lg">
-    <Navbar.Brand href="#home">Header</Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="ml-auto">
-        <Button variant="outline-primary">Button</Button>
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
+    <Navbar className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand href="#home">Rag-A-Thon </Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+            <a href="/"><Button>Reset</Button></a>
+          </Navbar.Text>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 

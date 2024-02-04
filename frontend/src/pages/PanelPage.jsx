@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { Form, useLocation } from 'react-router-dom';
+import { Form, useLocation, useNavigate } from 'react-router-dom';
 import './PanelPage.scss'
 import { Button, InputGroup } from 'react-bootstrap';
 
 const PanelPage = ({ }) => {
 
-    const location = useLocation();
-    const { images } = location.state || {};
+    const location = useLocation()
+    const { images } = location.state || {}
     const [checkedStates, setCheckedStates] = useState(new Array(images.length).fill(false))
     const [renderForm, setRenderForm] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedOption, setSelectedOption] = useState('')
     const [query, setQuery] = useState('')
+    const navigate = useNavigate()
 
     const handleCheckboxChange = (id) => (event) => {
         let newArr = [...checkedStates]
@@ -31,16 +32,15 @@ const PanelPage = ({ }) => {
 
     const handleFinalImage = () => {
         const trueCount = checkedStates.filter(value => value).length;
+        
         if (trueCount === 1) {
             console.log("Horray")
-            // call the final image page
-            // 
-            let imgArgs = []
-            for (let i = 0; i < checkedStates.length; i++){
-                if(checkedStates[i] === true){
-                    imgArgs.push(images[i])
-                }
-            }
+            const trueIndex = checkedStates.findIndex(value => value === true);
+            let imgArg = images[trueIndex]
+  
+            // api call for description
+            console.log("imgArg: " + imgArg)
+            navigate('/final', { state: { image: imgArg }})
             setErrorMessage('')
         }
         else {
@@ -114,10 +114,11 @@ const PanelPage = ({ }) => {
             </div>
 
             <div className='panel-decision'>
-                <Button onClick={handleFinalImage}>I know what I want</Button>
-                <Button onClick={toggleRenderForm}>Re-render</Button>
-                {errorMessage && (<p>Only one image can be selected</p>)}
+                <Button class="btn btn-success" onClick={handleFinalImage}>Finalize Image</Button>
+                <Button class="btn btn-warning" onClick={toggleRenderForm}>Create New Image</Button>
             </div>
+
+            {errorMessage && (<p className='warning'>Only one image can be selected</p>)}
 
             {renderForm && <div>
                 <form>

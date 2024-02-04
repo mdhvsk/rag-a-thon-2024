@@ -32,6 +32,7 @@ const handleQuerySearch = async () => {
 
   return (
     <div className="container mt-3">
+      <h2>Search</h2>
     <InputGroup>
       <Form.Control
         type="text"
