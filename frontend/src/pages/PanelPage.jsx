@@ -7,12 +7,12 @@ import axios from "axios";
 const PanelPage = ({ }) => {
 
     const location = useLocation()
-    const { images } = location.state || {}
+    const { images, prices } = location.state || {}
     const [checkedStates, setCheckedStates] = useState(new Array(images.length).fill(false))
     const [errorMessage, setErrorMessage] = useState('')
     const [query, setQuery] = useState('')
     const [show, setShow] = useState(false);
-
+    console.log(prices)
     const navigate = useNavigate()
 
     const handleCheckboxChange = (id) => (event) => {
@@ -74,14 +74,16 @@ const PanelPage = ({ }) => {
             try {
                 const response = await axios.post('http://localhost:8000/image-rag', formData,);
                 let imageUrls = []
+                let imagePrices = []
                 for (let i = 0; i < response.data.length; i++) {
                     imageUrls.push(response.data[i].filename)
+                    imagePrices.push(response.data[i].description)
                 }
                 console.log('Query successfully sent to the API', imageUrls);
                 setCheckedStates(new Array(images.length).fill(false))
                 setErrorMessage('')
                 setQuery('')
-                navigate('/panel', { state: { images: imageUrls }})
+                navigate('/panel', { state: { images: imageUrls, prices:imagePrices }})
             } catch (error) {
                 console.error('Error querying', error);
             }
@@ -160,6 +162,7 @@ const PanelPage = ({ }) => {
                                         />
                                     </div>
                                 </div>
+                                <p>{prices[index]}</p>
                             </div>
                         )}
                     </>
