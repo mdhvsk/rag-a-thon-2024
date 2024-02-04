@@ -12,7 +12,7 @@ function NavBar() {
   return (
     <Navbar bg="dark" data-bs-theme="dark" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">Precious Pixels</Navbar.Brand>
+        <Navbar.Brand>Precious Pixels</Navbar.Brand>
         <Nav className="me-auto">
             <Nav.Link href="/">Search</Nav.Link>
             <Nav.Link href="/upload">Upload</Nav.Link>
