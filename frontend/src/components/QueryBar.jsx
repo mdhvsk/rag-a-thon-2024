@@ -59,7 +59,7 @@ const handleQuerySearch = async () => {
     <InputGroup className='bar'>
       <Form.Control
         type="text"
-        placeholder="what you are looking for?"
+        placeholder="What you are looking for?"
         aria-label="Search"
         onChange={handleQueryChange}
         value={query}

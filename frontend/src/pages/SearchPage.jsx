@@ -7,7 +7,7 @@ import './SearchPage.scss'
 const SearchPage = () => {
   return (
     <div className='main-page'>
-      <h2>Welcome to the _____</h2>
+      <h2>Welcome to Precious Pixels</h2>
       <div className='search-page'>
         <QueryBar />
 
