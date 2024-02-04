@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import './NavBar.scss'
 
 function NavBar() {
   return (
@@ -38,13 +39,18 @@ function NavBar() {
     //     </Navbar.Collapse>
     //   </Container>
     // </Navbar>
-    <Navbar className="bg-body-tertiary">
+
+
+    <Navbar bg="dark" data-bs-theme="dark" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="#home">Rag-A-Thon </Navbar.Brand>
-        <Navbar.Toggle />
+        <Nav className="me-auto">
+            <Nav.Link href="/">Search</Nav.Link>
+            <Nav.Link href="/upload">Upload</Nav.Link>
+          </Nav>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            <a href="/"><Button>Reset</Button></a>
+            <a href="/"><Button variant="outline-success">Reset</Button></a>
           </Navbar.Text>
         </Navbar.Collapse>
       </Container>

@@ -1,8 +1,23 @@
-.search-page {
+.main-page {
     text-align: center;
-    justify-content: center;
+    background-color: whitesmoke;
+    height: calc(100vh - 50px);
+
+    h2 {
+        padding-top: 50px;
+    }
+
+}
+
+
+.search-page {
+    display: flex;
     align-items: center;
-    > * {
-        margin-bottom: 50px;
+    justify-content: space-around;
+    padding: 50px;
+
+    >* {
+        width: 50%;
+        margin: 10px;
     }
 }

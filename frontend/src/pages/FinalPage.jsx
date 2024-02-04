@@ -9,10 +9,14 @@ const FinalPage = () => {
   return (
     <div className='final-page'>
     
-      <h2>Result</h2>
 
+      <h4>Results</h4>
+
+      <div className='content'>
       <img src={image} className='final-image' alt='final image'/>
       <p>Description</p>
+      </div>
+
     </div>
   )
 }
