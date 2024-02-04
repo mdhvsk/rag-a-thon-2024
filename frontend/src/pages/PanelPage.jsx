@@ -79,9 +79,7 @@ const PanelPage = ({ }) => {
                 }
                 console.log('Query successfully sent to the API', imageUrls);
                 setCheckedStates(new Array(images.length).fill(false))
-                setRenderForm(false)
                 setErrorMessage('')
-                setSelectedOption('')
                 setQuery('')
                 navigate('/panel', { state: { images: imageUrls }})
             } catch (error) {
