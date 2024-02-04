@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Form, useLocation, useNavigate } from 'react-router-dom';
 import './PanelPage.scss'
 import { Button, InputGroup, Modal } from 'react-bootstrap';
+import axios from "axios";
 
 const PanelPage = ({ }) => {
 
@@ -64,11 +65,31 @@ const PanelPage = ({ }) => {
         console.log(query)
         //hand over image urls and text prompt to 
 
+        if (imgArgs.length > 0){
+            const formData = new FormData();
+            formData.append('search_query', '');
+            formData.append('iteration', 'mid')
+            formData.append('fine_tuning_prompt', query)
+            formData.append('inspiration_image_filenames', imgArgs.join('&'))
+
+            try {
+                const response = await axios.post('http://localhost:8000/image-rag', formData,);
+                let imageUrls = []
+                for (let i = 0; i < response.data.length; i++) {
+                    imageUrls.push(response.data[i].filename)
+                }
+                console.log('Query successfully sent to the API', imageUrls);
+                setCheckedStates(new Array(images.length).fill(false))
+                setErrorMessage('')
+                setQuery('')
+                navigate('/panel', { state: { images: imageUrls }})
+            } catch (error) {
+                console.error('Error querying', error);
+            }
+        }
+
 
         // reset state with new imageurls and original values
-        setCheckedStates(new Array(images.length).fill(false))
-        setErrorMessage('')
-        setQuery('')
 
     }
 
